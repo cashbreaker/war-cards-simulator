@@ -4,18 +4,22 @@ public class Game {
     private Queue<Card> firstPlayer;
     private Queue<Card> secondPlayer;
     private List<Round> roundList;
+    private int deckSize;
 
-    public Game() {
+    public Game(int deckSize) {
         this.firstPlayer = new LinkedList<>();
         this.secondPlayer = new LinkedList<>();
         this.roundList = new ArrayList<>();
+        this.deckSize = deckSize;
     }
 
     public void initializeGame() {
         List<Card> deck = new ArrayList<>();
-        for (Suit suit:Suit.values()) {
-            for(Value value:Value.values()) {
-                deck.add(new Card(value,suit));
+        for (int i = 0; i < deckSize; i++) {
+            for (Suit suit:Suit.values()) {
+                for(Value value:Value.values()) {
+                    deck.add(new Card(value,suit));
+                }
             }
         }
         Collections.shuffle(deck);
